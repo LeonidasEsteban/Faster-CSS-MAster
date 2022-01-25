@@ -1,0 +1,108 @@
+@import './hero.css';
+@import './press.css';
+@import './transaction.css';
+@import './why.css';
+@import './sticky.css';
+
+.wrapper {
+  max-inline-size: 1000px;
+  /* width: 100%; */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+body {
+  margin: 0;
+}
+
+section {
+  block-size: 500px;
+  border: 1px solid red;
+}
+
+:root {
+  --phoneInlineSize: 400px;
+  --gridTemplateColumns: 1fr var(--phoneInlineSize) 1000px 1fr;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: var(--gridTemplateColumns);
+  grid-template-areas: 'wrapper-start phone content wrapper-end';
+}
+
+
+@media screen and (max-width: 1400px) {
+  :root {
+    --phoneInlineSize: 300px;
+    --gridTemplateColumns: auto var(--phoneInlineSize) 1fr auto;
+    /* grid-template-areas: 'phone content'; */
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --phoneBlockSize: 400px;
+    --gridTemplateColumns: auto auto 1fr auto;
+    /* grid-template-areas: 'phone content'; */
+  }
+  .grid {
+    display: block;
+  }
+  .hero {
+    block-size: auto;
+    padding-block: 50px;
+    grid-row-start: initial;
+  }
+  .press {
+    grid-row-start: initial;
+  }
+
+  .hero-content {
+    display: initial;
+  }
+
+  .hero {
+    padding-block-end: calc(var(--phoneBlockSize) / 2 + 3rem);
+  }
+
+  .sticky {
+    position: initial;
+    grid-area: initial !important;
+    grid-column: 1 / -1;
+    text-align: center;
+    /* transform: translateY(-50%); */
+    /* margin-block-start: -50%; */
+    margin-block-start: calc(var(--phoneBlockSize) / 2 * -1);
+    block-size: var(--phoneBlockSize);
+    background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, #deb887 50%, #deb887);
+  }
+
+  .sticky img {
+    max-block-size: 100%;
+  }
+
+
+}
+
+.sticky {
+  grid-area: phone;
+}
+
+
+
+.grid section {
+  /* grid-column-start: 1;
+  grid-column-end: -1; */
+  grid-column: 1 / -1;
+}
+
+.inset-grid {
+  display: grid;
+  grid-template-columns: var(--gridTemplateColumns);
+  grid-template-areas: '. . content .';
+}
+
+.inset-grid [class*="content"] {
+  grid-area: content;
+}

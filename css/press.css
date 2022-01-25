@@ -1,0 +1,10 @@
+.press {
+  background-color: burlywood;
+  block-size: 500px;
+  grid-row-start: 2;
+  /* margin-block-start: -71px; */
+}
+
+.press-content {
+  display: flex;
+}
